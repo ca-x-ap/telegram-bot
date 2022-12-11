@@ -1,7 +1,7 @@
 from aiogram import types
 from loader import dp
 from googlesearch import search
-from utils.Google import Google
+from utils.google_search import Google
 # from utils.misc import rate_limit
 
 
