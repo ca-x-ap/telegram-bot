@@ -178,23 +178,20 @@ async def bot_echo(message: types.Message):
     #     await message.answer(get_text_messages(message.text))
     # else:
         # await message.answer_sticker('CAACAgIAAxkBAAIkX1-IhRHPL_m63dRhOutqKUDTiKoGAAJgAQACEBptIsq5BfpP9_oHGwQ')
-
-    search_results = Google.search(message.text)
-    if len(search_results) > 0:
-        await message.answer(search_results)
-    else:
-        await message.answer_sticker('CAACAgIAAxkBAAIkX1-IhRHPL_m63dRhOutqKUDTiKoGAAJgAQACEBptIsq5BfpP9_oHGwQ')
-        await message.answer('Пиздец я сдох')
-        await message.answer('Слишком много смотрел в гугл')
     
-    # try:
-    #     for url in search(message.text, stop=1):
-    #         await message.answer(url)
-    # except Exception as e:
-    #     await message.answer_sticker('CAACAgIAAxkBAAIkX1-IhRHPL_m63dRhOutqKUDTiKoGAAJgAQACEBptIsq5BfpP9_oHGwQ')
-    #     await message.answer('Пиздец я сдох')
-    #     await message.answer('Слишком много смотрел в гугл')
-        
+    try:
+        for url in search(message.text, stop=20):
+            await message.answer(url)
+    except Exception as e:
+        print('search faild', e)
+        search_results = Google.search(message.text)
+        if len(search_results) > 0:
+            await message.answer(search_results)
+        else:
+            print('google faild', search_results)
+            await message.answer_sticker('CAACAgIAAxkBAAIkX1-IhRHPL_m63dRhOutqKUDTiKoGAAJgAQACEBptIsq5BfpP9_oHGwQ')
+            await message.answer('Пиздец я сдох')
+            await message.answer('Слишком много смотрел в гугл')
 
     # global question
 
